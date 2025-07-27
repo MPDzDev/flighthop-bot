@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "iata": "STN",
+    "name": "London Stansted Airport",
+    "city": "London",
+    "country": "United Kingdom",
+    "lat": 51.885,
+    "lon": 0.235
+  },
+  {
+    "iata": "DUB",
+    "name": "Dublin Airport",
+    "city": "Dublin",
+    "country": "Ireland",
+    "lat": 53.4213,
+    "lon": -6.2701
+  }
+]
