@@ -1,0 +1,11 @@
+[
+  {
+    "from": "STN",
+    "to": {
+      "iata": "DUB",
+      "name": "Dublin Airport",
+      "lat": 53.4213,
+      "lon": -6.2701
+    }
+  }
+]
