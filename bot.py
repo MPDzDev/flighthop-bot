@@ -1,18 +1,37 @@
-"""
-FlightHop bot entry point.
+"""Entry point for running simple FlightHop utilities.
 
-This script defines the Telegram bot handlers for the FlightHop game. It uses
-python-telegram-bot to handle commands, guesses, and daily progression.
-
-Note: This is a placeholder implementation. You need to implement the actual
-bot logic, including loading routes from data/routes.json, tracking per-group
-state in data/state.json, and responding to user guesses.
+The real Telegram bot is not implemented yet, but this module exposes a small
+command–line interface that demonstrates the helper functions found in the
+project.  It is intentionally lightweight so that the repository remains easy to
+understand for newcomers.
 """
 
-# TODO: Implement the FlightHop bot using python-telegram-bot
+from __future__ import annotations
 
-def main():
-    print("FlightHop bot is not yet implemented. Please see README.md for details.")
+import argparse
+
+from airport_lookup import find_airport
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="FlightHop helper CLI")
+    parser.add_argument(
+        "--lookup",
+        metavar="IATA",
+        help="Lookup an airport by IATA code and print basic information",
+    )
+    args = parser.parse_args()
+
+    if args.lookup:
+        airport = find_airport(args.lookup)
+        if airport:
+            print(
+                f"{airport['iata']} - {airport['name']} ({airport['city']}, {airport['country']})"
+            )
+        else:
+            print(f"Airport '{args.lookup}' not found.")
+    else:
+        parser.print_help()
 
 if __name__ == "__main__":
     main()
